@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -16,8 +17,15 @@ func main() {
 
 	values := strings.Split(operation, "+")
 
-	operator1, _ := strconv.Atoi(values[0])
-	operator2, _ := strconv.Atoi(values[1])
+	operator1, err := strconv.Atoi(values[0])
+	if err != nil {
+		log.Fatal("First operator must be a number")
+	}
+
+	operator2, err := strconv.Atoi(values[1])
+	if err != nil {
+		log.Fatal("Second operator must be a number")
+	}
 
 	fmt.Println(operator1 + operator2)
 }
