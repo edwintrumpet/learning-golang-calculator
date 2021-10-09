@@ -8,6 +8,25 @@
 
 Calculator project in "Curso práctico de Go" by Platzi
 
+This program performs a mathematical operation between two integers supporting
+the following operations
+
+- addition (+)
+- substraction (-)
+- multiplication (*)
+- division (/)
+
+## Usage
+
+If you want to add two numbers, for exmaple 2 and 7.
+
+- Execute the program
+- Enter the following expression in console and press enter to get the result
+```shell
+2+7
+9
+```
+
 
 ## License
 
