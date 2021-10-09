@@ -14,18 +14,31 @@ func main() {
 	scanner.Scan()
 
 	operation := scanner.Text()
+	operator := "-"
 
-	values := strings.Split(operation, "+")
+	values := strings.Split(operation, operator)
 
-	operator1, err := strconv.Atoi(values[0])
+	value1, err := strconv.Atoi(values[0])
 	if err != nil {
-		log.Fatal("First operator must be a number")
+		log.Fatal("first operator must be a number")
 	}
 
-	operator2, err := strconv.Atoi(values[1])
+	value2, err := strconv.Atoi(values[1])
 	if err != nil {
-		log.Fatal("Second operator must be a number")
+		log.Fatal("second operator must be a number")
 	}
 
-	fmt.Println(operator1 + operator2)
+	switch operator {
+	case "+":
+		fmt.Println(value1 + value2)
+	case "-":
+		fmt.Println(value1 - value2)
+	case "*":
+		fmt.Println(value1 * value2)
+	case "/":
+		fmt.Println(value1 / value2)
+	default:
+		log.Fatal("unsupported operator")
+	}
+
 }
