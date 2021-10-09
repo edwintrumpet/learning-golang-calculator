@@ -5,14 +5,16 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
-	"strings"
 )
 
 type calc struct{}
 
-func (calc) operate(entry, operator string) int {
-	values := strings.Split(entry, operator)
+func (calc) operate(entry string) int {
+	re := regexp.MustCompile(`\D`)
+	values := re.Split(entry, 2)
+	operator := string(re.Find([]byte(entry)))
 
 	value1 := parse(values[0])
 	value2 := parse(values[1])
@@ -48,11 +50,7 @@ func readEntry() string {
 
 func main() {
 	operation := readEntry()
-	operator := readEntry()
-
-	o := new(calc)
-
-	result := o.operate(operation, operator)
-
+	c := new(calc)
+	result := c.operate(operation)
 	fmt.Println(result)
 }
